@@ -12,8 +12,9 @@ from apps.card3d.card3d import app as card3d
 
 apps = FastAPI()
 
-#@apps.get("/todo")
-#def read_card(request: Request): return {"message": "", "root_path": request.scope.get("root_path")}
+@apps.get("/", response_class=RedirectResponse)
+def homepage(request: Request) -> RedirectResponse:
+    return RedirectResponse("/nav/", status_code=301)
 
 
 #@apps.post("/")
