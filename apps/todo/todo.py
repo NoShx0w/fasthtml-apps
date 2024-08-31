@@ -24,7 +24,7 @@ async def get():
     card = Card(Ul(*todos(), id='todo-list'),
                 header=add, footer=Div(id=id_curr)),
     title = 'Todo list'
-    return Title(title), Main(H1(title), card, cls='container')
+    return Title(title), Main(H1(title), card, id="page-content")
 
 @rt("/todos/{id}")
 async def delete(id:int):
