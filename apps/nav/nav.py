@@ -1,7 +1,7 @@
 from fasthtml.common import *
+from fasthtml.svg import Polyline
 
-
-hdrs = [StyleX("apps/nav/nav.css")]
+hdrs = [SortableJS(),StyleX("apps/nav/nav.css")]
 
 app,rt = fast_app(hdrs=hdrs)
 
@@ -11,7 +11,7 @@ def navigation_bar(navigation_items: list[str]):
     return Nav(
         Ul(
             *[
-                Li(Button(item, hx_get=f"/{item}/", hx_trigger="click", hx_target="#page-content", hx_swap="outerHTML"))
+                Li(Button(item, hx_get=f"/{item}/", hx_trigger="click", hx_target="#page-content", hx_swap="outerHTML", cls="primary-button"), cls="button-borders")
                 for item in navigation_items
             ]
         ),
@@ -21,7 +21,7 @@ def navigation_bar(navigation_items: list[str]):
 @rt("/")
 def index():
     return Div(
-        Div(id="page-content"),
-        Div(navigation_bar(app_list)),
+        Main(id="page-content", cls="content"),
+        navigation_bar(app_list),
         cls="container"
     )

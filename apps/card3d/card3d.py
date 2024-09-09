@@ -45,7 +45,8 @@ def get():
         Div(card_3d('FastHTML', url1, 1.5, hx_get='/click'),
             card_3d('Components!', url2, 1.5, left_align=True, hx_get='/click')),
         Div(*cards),
-        id="page-content"
+        id="page-content",
+        cls="content"
     )
 
 
